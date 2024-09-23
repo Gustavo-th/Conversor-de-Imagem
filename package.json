@@ -1,0 +1,14 @@
+
+
+{
+  "name": "conversor-de-imagem",
+  "version": "1.0.0",
+  "scripts": {
+    "app": "node ./public/assets/backend/main.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.5"
+  }
+}
