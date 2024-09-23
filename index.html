@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Imagem</title>
+  </head>
+  <body>
+    <h1>Conversor de Imagem</h1>
+    <section class="container">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" id="img" required />
+        <div><img id="previa" src="" alt="" /></div>
+
+        <select name="format">
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WEBP</option>
+          <option value="tiff">TIFF</option>
+          <option value="jpg">JPG</option>
+          <option value="jpe">JPE</option>
+        </select>
+        <button type="submit">Converter Imagem</button>
+      </form>
+      <a href="http://">Repositorio</a>
+    </section>
+
+    <script>
+      const fileInput = document.getElementById("img");
+      const preview = document.getElementById("previa");
+
+      // Atualiza o nome do arquivo e mostra a pré-visualização
+      fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+          // Atualiza o nome do arquivo
+
+          // Cria um FileReader para ler o arquivo
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            // Define o src da imagem de pré-visualização
+            preview.src = e.target.result;
+            preview.style.display = "block";
+          };
+          reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados (base64)
+        } else {
+          preview.src = "";
+          preview.style.display = "none";
+        }
+      });
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+        color: #fff;
+      }
+
+      .container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: darkgray;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      input[type="file"] {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ddd;
+        color: #333;
+        cursor: pointer;
+      }
+
+      input[type="file"]:hover {
+        background-color: #ddd;
+      }
+
+      select {
+        margin-bottom: 10px;
+        padding: 2px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .final {
+        margin-bottom: 5px;
+        padding-top: 5px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .nav-footer {
+        padding-top: 50px;
+      }
+      a {
+        color:black;
+        text-decoration: none;
+      }
+
+      #previa {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: none;
+      }
+    </style>
+  </body>
+</html>

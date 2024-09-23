@@ -9,10 +9,9 @@ const port = 3000;
 
 // Configura o Multer para armazenar o arquivo temporariamente
 const upload = multer({ dest: 'uploads/' });
-app.use(express.static(path.join(__dirname, '../../index.html')));
 // Rota para servir a página HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Rota para fazer upload e converter a imagem
